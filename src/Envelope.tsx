@@ -5,7 +5,10 @@ export function Envelope({mono,onOpened,onStartOpen}:{mono:string;onOpened:()=>v
  const [s,set]=useState<'idle'|'press'|'open'|'fade'|'gone'>('idle'),rm=useReduced();
  const go=()=>{if(s!=='idle')return;navigator.vibrate?.(10);onStartOpen?.();
   if(rm){set('fade');onOpened();setTimeout(()=>set('gone'),500);return}
-  set('press');setTimeout(()=>set('open'),900);setTimeout(()=>{set('fade');onOpened()},3700);setTimeout(()=>set('gone'),4900)};
+  set('press');
+  setTimeout(()=>{set('open');onOpened()},950);
+  setTimeout(()=>set('fade'),2800);
+  setTimeout(()=>set('gone'),3800)};
  if(s==='gone')return null;
  const fl=<><Sprig className="sp l"/><Sprig className="sp r" flip/><Sprig className="sp bl"/><Sprig className="sp br" flip/></>;
  return <div className="env" data-s={s} aria-label="Sealed invitation envelope">
