@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {Sprig,Seal} from './art';
 import {useReduced} from './lib';
-export function Envelope({mono,onOpened}:{mono:string;onOpened:()=>void}){
+export function Envelope({mono,onOpened,onStartOpen}:{mono:string;onOpened:()=>void;onStartOpen?:()=>void}){
  const [s,set]=useState<'idle'|'press'|'open'|'fade'|'gone'>('idle'),rm=useReduced();
- const go=()=>{if(s!=='idle')return;navigator.vibrate?.(10);
+ const go=()=>{if(s!=='idle')return;navigator.vibrate?.(10);onStartOpen?.();
   if(rm){set('fade');onOpened();setTimeout(()=>set('gone'),500);return}
   set('press');setTimeout(()=>set('open'),900);setTimeout(()=>{set('fade');onOpened()},3700);setTimeout(()=>set('gone'),4900)};
  if(s==='gone')return null;

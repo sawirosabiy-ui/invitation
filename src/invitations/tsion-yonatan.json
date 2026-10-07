@@ -5,4 +5,5 @@
 "schedule":[{"time":"10:00","title":"Ceremony"},{"time":"12:30","title":"Reception"},{"time":"15:00","title":"Dinner"},{"time":"18:00","title":"Dancing"}],
 "venue":{"name":"Venue name","address":"Street address, Addis Ababa, Ethiopia","lat":9.0108,"lng":38.7613},
 "rsvp":{"enabled":true,"maxGuests":4},
+"music":{"src":"/invitation-audio.mp3","title":"Wedding Ceremony"},
 "scenes":["cover","invite","date","countdown","schedule","venue","rsvp"]}

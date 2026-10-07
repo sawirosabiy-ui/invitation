@@ -7,5 +7,6 @@ export interface Invitation{
  schedule:{time:string;title:string}[];
  venue:{name:string;address:string;lat:number;lng:number};
  rsvp:{enabled:boolean;maxGuests:number;endpoint?:string};
+ music?:{src:string;title?:string};
  scenes:string[];
 }

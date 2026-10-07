@@ -90,4 +90,9 @@ h1,h2,h3,p{margin:0}
 @keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.025)}}
 .env .hint{position:absolute;bottom:calc(52px + env(safe-area-inset-bottom));width:100%;text-align:center;color:var(--hi);z-index:4;transition:opacity .6s}
 .env:not([data-s=idle]) .hint{opacity:0}
+/* audio control */
+.audio-btn{position:fixed;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:40;width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--champagne) 88%,transparent);border:1px solid var(--rose);color:var(--burgundy);cursor:pointer;display:grid;place-items:center;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .3s ease,background .3s ease;-webkit-tap-highlight-color:transparent}
+.audio-btn:active{transform:scale(.92)}
+.audio-btn svg{width:18px;height:18px;fill:currentColor}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}.seal-btn{animation:none!important}.env{transition:opacity .5s!important}.flap,.light{display:none}}
+

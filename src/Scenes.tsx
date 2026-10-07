@@ -29,9 +29,10 @@ function Countdown({inv}:P){const c=useCountdown(epochFor(inv.date.iso,inv.date.
  return <Scene id="countdown" cls="alt"><h2 className="script">The celebration begins in</h2>
   <div className="cd" role="timer" aria-label={`${c.Days} days ${c.Hours} hours ${c.Minutes} minutes ${c.Seconds} seconds`}>{(['Days','Hours','Minutes','Seconds'] as const).map(k=><div key={k}><b>{String(c[k]).padStart(2,'0')}</b><small>{k}</small></div>)}</div></Scene>}
 function Schedule({inv}:P){const ref=useRef<HTMLOListElement>(null),p=useScrollProgress(ref),n=inv.schedule.length;
+ const pos=n>1?((0.5+p*(n-1))/n)*100:50;
  return <Scene id="schedule"><h2 className="script">Schedule of events</h2>
-  <ol className="tl" ref={ref}><span className="line" aria-hidden="true"/><svg className="rose-m" style={{top:`${p*100}%`}} viewBox="-16 -22 32 32" aria-hidden="true"><g style={{color:'var(--burgundy)'}}><Rose s={.9}/></g></svg>
-   {inv.schedule.map((s,i)=><li key={i} className={p>=(i+.5)/n-.5/n?'lit':''}><time>{s.time}</time><i aria-hidden="true"/><span>{s.title}</span></li>)}</ol></Scene>}
+  <ol className="tl" ref={ref}><span className="line" aria-hidden="true"/><svg className="rose-m" style={{top:`${pos}%`}} viewBox="-16 -22 32 32" aria-hidden="true"><g style={{color:'var(--burgundy)'}}><Rose s={.9}/></g></svg>
+   {inv.schedule.map((s,i)=><li key={i} className={p>=i/(n-1||1)-0.1?'lit':''}><time>{s.time}</time><i aria-hidden="true"/><span>{s.title}</span></li>)}</ol></Scene>}
 function Venue({inv}:P){const v=inv.venue,d=(m=>new Intl.DateTimeFormat('en-US',{dateStyle:'full',timeZone:'UTC'}).format(new Date(Date.UTC(m[0],m[1]-1,m[2]))))(inv.date.iso.match(/\d+/g)!.map(Number));
  const t=inv.date.iso.match(/T(\d\d):(\d\d)/)!;
  return <Scene id="venue" cls="alt"><h2 className="script">Location</h2><p className="vname">{v.name}</p><p className="body">{d} · {t[1]}:{t[2]}</p><p className="body soft">{v.address}</p>
