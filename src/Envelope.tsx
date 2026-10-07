@@ -13,7 +13,7 @@ export function Envelope({mono,onOpened,onStartOpen}:{mono:string;onOpened:()=>v
    <svg className="folds" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L50 47L100 0M0 100L50 53L100 100" fill="none" stroke="var(--rose)" strokeWidth=".25" vectorEffect="non-scaling-stroke"/></svg></div>
   <div className="light" aria-hidden="true"/>
   <div className="flap"><div className="ff"/><div className="fb"/></div>
-  <button className="seal-btn" onClick={go} aria-label="Break the seal to open the invitation"><Seal text={mono}/></button>
+  <button className="seal-btn" onClick={go} aria-label="Break the seal to open the invitation"><Seal text={mono} broken={s!=='idle'}/></button>
   <p className="hint">Touch the seal</p>
  </div>;
 }

@@ -13,15 +13,38 @@ export const Sprig=({flip=false,className=''}:{flip?:boolean;className?:string})
   <Leaf x={30} y={190} r={-30}/><Leaf x={40} y={150} r={-60} s={1.1}/><Leaf x={56} y={110} r={20}/><Leaf x={60} y={85} r={-70}/><Leaf x={70} y={42} r={-20} s={.9}/>
   <Rose x={78} y={170} s={1.5}/><Rose x={52} y={128} s={1.1}/><Rose x={84} y={30} s={.9}/>
  </svg>);
-export function Seal({text,tone='cream',size=108}:{text:string;tone?:'cream'|'red';size?:number}){
+export function Seal({text,tone='cream',size=108,broken=false}:{text:string;tone?:'cream'|'red';size?:number;broken?:boolean}){
  const d=useMemo(()=>Array.from({length:97},(_,i)=>{const a=i/96*Math.PI*2,r=44+2.6*Math.sin(a*11)+1.2*Math.sin(a*5);return`${i?'L':'M'}${(50+r*Math.cos(a)).toFixed(1)} ${(50+r*Math.sin(a)).toFixed(1)}`}).join('')+'Z',[]);
  const c=tone==='cream'?['#fbe9e0','#e6c3b0','#a9765a','#8a5a46']:['#a8283e','#6e1424','#3a0a14','#e9a9b2'];
  const id='g'+tone;
- return <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-  <defs><radialGradient id={id} cx=".35" cy=".3" r=".9"><stop offset="0" stopColor={c[0]}/><stop offset=".7" stopColor={c[1]}/><stop offset="1" stopColor={c[2]}/></radialGradient></defs>
-  <path d={d} fill={`url(#${id})`} style={{filter:'drop-shadow(0 3px 4px rgba(0,0,0,.45))'}}/>
-  <circle cx="50" cy="50" r="31" fill="none" stroke={c[3]} strokeWidth="1.2" opacity=".6"/>
-  <text x="50" y="58" textAnchor="middle" fontFamily="var(--script)" fontSize={text.length>4?20:27} fill={c[3]} opacity=".85">{text}</text></svg>;
+ return <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true" className={broken?'seal-broken':''}>
+  <defs>
+   <radialGradient id={id} cx=".35" cy=".3" r=".9"><stop offset="0" stopColor={c[0]}/><stop offset=".7" stopColor={c[1]}/><stop offset="1" stopColor={c[2]}/></radialGradient>
+   {broken&&<clipPath id="cleft"><path d="M0 0 L55 0 L46 38 L54 62 L45 100 L0 100 Z"/></clipPath>}
+   {broken&&<clipPath id="cright"><path d="M55 0 L100 0 L100 100 L45 100 L54 62 L46 38 Z"/></clipPath>}
+  </defs>
+  {broken?(
+   <>
+    <g clipPath="url(#cleft)" className="seal-half-l">
+     <path d={d} fill={`url(#${id})`} style={{filter:'drop-shadow(0 3px 4px rgba(0,0,0,.45))'}}/>
+     <circle cx="50" cy="50" r="31" fill="none" stroke={c[3]} strokeWidth="1.2" opacity=".6"/>
+     <text x="50" y="58" textAnchor="middle" fontFamily="var(--script)" fontSize={text.length>4?20:27} fill={c[3]} opacity=".85">{text}</text>
+    </g>
+    <g clipPath="url(#cright)" className="seal-half-r">
+     <path d={d} fill={`url(#${id})`} style={{filter:'drop-shadow(0 3px 4px rgba(0,0,0,.45))'}}/>
+     <circle cx="50" cy="50" r="31" fill="none" stroke={c[3]} strokeWidth="1.2" opacity=".6"/>
+     <text x="50" y="58" textAnchor="middle" fontFamily="var(--script)" fontSize={text.length>4?20:27} fill={c[3]} opacity=".85">{text}</text>
+    </g>
+    <path d="M55 0 L46 38 L54 62 L45 100" fill="none" stroke="rgba(255,240,225,0.7)" strokeWidth="1.2" className="seal-crack"/>
+   </>
+  ):(
+   <>
+    <path d={d} fill={`url(#${id})`} style={{filter:'drop-shadow(0 3px 4px rgba(0,0,0,.45))'}}/>
+    <circle cx="50" cy="50" r="31" fill="none" stroke={c[3]} strokeWidth="1.2" opacity=".6"/>
+    <text x="50" y="58" textAnchor="middle" fontFamily="var(--script)" fontSize={text.length>4?20:27} fill={c[3]} opacity=".85">{text}</text>
+   </>
+  )}
+ </svg>;
 }
 export function Torn(){
  const d=useMemo(()=>{let s=7;const r=()=>(s=(s*16807)%2147483647)/2147483647;let p='M0 18';for(let x=0;x<=440;x+=11)p+=`L${x} ${(3+r()*11).toFixed(1)}`;return p+'L440 18Z'},[]);
