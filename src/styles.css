@@ -81,9 +81,11 @@ h1,h2,h3,p{margin:0}
 .flap>div{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 94%);backface-visibility:hidden}
 .ff{background:linear-gradient(#4a1421,var(--env));filter:drop-shadow(0 6px 8px rgba(0,0,0,.5))}.fb{background:linear-gradient(#c9906f,#e9c1a0);transform:rotateX(180deg)}
 .env[data-s=open] .flap,.env[data-s=fade] .flap{transform:rotateX(180deg)}
-.light{position:absolute;left:50%;top:42%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.2);opacity:0;z-index:1;background:radial-gradient(circle,#fff6e4 0,#ffdca8 12%,rgba(255,190,120,.5) 28%,transparent 62%);transition:opacity 1.6s ease .9s,transform 2s ease .9s}
-.env[data-s=open] .light,.env[data-s=fade] .light{opacity:1;transform:translate(-50%,-50%) scale(1.4)}
-.env[data-s=fade] .light{opacity:1}
+.light{position:absolute;left:50%;top:46%;width:160%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.15);opacity:0;z-index:2;pointer-events:none;transition:opacity 1.4s ease .6s,transform 2.2s cubic-bezier(.2,.8,.3,1) .6s}
+.light-core{position:absolute;inset:0;background:radial-gradient(circle,#ffffff 0%,#ffe5b4 16%,#ffc078 35%,rgba(232,140,60,.4) 52%,transparent 70%);border-radius:50%}
+.light-rays{position:absolute;inset:-20%;background:conic-gradient(from 0deg,transparent 0deg,#ffe8b8 12deg,transparent 24deg,#ffdf9e 42deg,transparent 60deg,#fff2d0 84deg,transparent 102deg,#ffd480 135deg,transparent 150deg,#ffe8b8 192deg,transparent 210deg,#ffdf9e 235deg,transparent 255deg,#fff2d0 295deg,transparent 315deg,#ffd480 340deg,transparent 360deg);opacity:.65;mix-blend-mode:screen;border-radius:50%;animation:rayturn 18s linear infinite}
+@keyframes rayturn{to{transform:rotate(360deg)}}
+.env[data-s=open] .light,.env[data-s=fade] .light{opacity:1;transform:translate(-50%,-50%) scale(1.6)}
 .seal-btn:is(.env *){position:absolute;left:50%;top:50%;margin:0;transform:translate(-50%,-50%);z-index:4;animation:breathe 4.5s ease-in-out infinite}
 .env[data-s=press] .seal-btn{animation:none;transform:translate(-50%,-50%) scale(.96)}
 .env[data-s=open] .seal-btn,.env[data-s=fade] .seal-btn{animation:none;transition:opacity 1.2s,transform 1.6s;opacity:0;transform:translate(-50%,-16%) scale(.90)}
