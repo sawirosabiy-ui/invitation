@@ -1,0 +1,8 @@
+{"slug":"selam-daniel","theme":"ivory-sage",
+"couple":{"a":{"name":"Selam"},"b":{"name":"Daniel"},"monogram":"S&D"},
+"copy":{"kicker":"Together with their families","invite":"invite you to share in the joy of their marriage.","rsvpPrompt":"Kindly let us know whether you can join us.","closing":"With love"},
+"date":{"iso":"2027-02-20T15:30:00","timezone":"Africa/Addis_Ababa"},
+"schedule":[{"time":"15:30","title":"Ceremony"},{"time":"17:30","title":"Celebration"},{"time":"19:00","title":"Dinner"}],
+"venue":{"name":"Garden House","address":"Bole Road, Addis Ababa, Ethiopia","lat":8.9946,"lng":38.7857},
+"rsvp":{"enabled":true,"maxGuests":2},
+"scenes":["cover","invite","date","countdown","schedule","venue","rsvp"]}

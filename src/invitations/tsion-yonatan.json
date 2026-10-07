@@ -1,0 +1,8 @@
+{"slug":"tsion-yonatan","theme":"burgundy-rose",
+"couple":{"a":{"name":"Tsion","family":["Ashenafi"]},"b":{"name":"Yonatan"},"monogram":"T&Y"},
+"copy":{"kicker":"Wedding Day","invite":"warmly invite you to celebrate their wedding, together with their families.","rsvpPrompt":"To help us prepare for a joyful celebration, kindly confirm your attendance.","closing":"Hope to see you there!"},
+"date":{"iso":"2026-10-10T16:00:00","timezone":"Africa/Addis_Ababa"},
+"schedule":[{"time":"10:00","title":"Ceremony"},{"time":"12:30","title":"Reception"},{"time":"15:00","title":"Dinner"},{"time":"18:00","title":"Dancing"}],
+"venue":{"name":"Venue name","address":"Street address, Addis Ababa, Ethiopia","lat":9.0108,"lng":38.7613},
+"rsvp":{"enabled":true,"maxGuests":4},
+"scenes":["cover","invite","date","countdown","schedule","venue","rsvp"]}
